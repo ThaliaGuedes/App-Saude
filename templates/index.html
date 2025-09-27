@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Saúde</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        .info-box {
+            display: none;
+            background-color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 15px;
+            box-shadow: 0 0 8px rgba(0,0,0,0.2);
+            font-size: 14px;
+            text-align: left;
+        }
+        .info-box h3 {
+            margin-top: 0;
+            color: #4CAF50;
+        }
+        .info-item {
+            padding: 5px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .info-item:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="phone-frame">
+        <div class="header">App Saúde</div>
+
+        <div class="container">
+            <button class="box" onclick="showInfo('saude')">Minha saúde</button>
+            <button class="box" onclick="showInfo('agendamento')">Agendamento</button>
+            <button class="box" onclick="showInfo('noticia')">Notícia</button>
+            <button class="box" onclick="showInfo('avisos')">Avisos</button>
+            <button class="box" onclick="showInfo('postinho')">Postinho</button>
+            <button class="box" onclick="showInfo('vacina')">Vacina</button>
+            <button class="box" onclick="showInfo('unidade')">Unidade de saúde</button>
+            <button class="box" onclick="showInfo('medicamentos')">Medicamentos</button>
+            <button class="box" onclick="showInfo('servicos')">Serviços</button>
+            <button class="box" onclick="showInfo('ouvidoria')">Ouvidoria</button>
+        </div>
+
+
+        <div id="info-saude" class="info-box">
+            <h3>Histórico de Saúde</h3>
+            <div class="info-item"><strong>12/07/2024:</strong> Consulta - Clínico Geral</div>
+            <div class="info-item"><strong>23/08/2024:</strong> Exame de Sangue</div>
+            <div class="info-item"><strong>05/09/2024:</strong> Vacina Gripe</div>
+        </div>
+
+        <div id="info-agendamento" class="info-box">
+            <h3>Próximos Agendamentos</h3>
+            <div class="info-item"><strong>15/08/2024:</strong> Consulta Odontológica</div>
+            <div class="info-item"><strong>29/08/2024:</strong> Exame de Raio-X</div>
+        </div>
+
+        <div id="info-noticia" class="info-box">
+            <h3>Últimas Notícias</h3>
+            <div class="info-item">Nova campanha de vacinação contra a dengue começa em setembro.</div>
+            <div class="info-item">Postos de saúde abrem aos sábados para atendimento básico.</div>
+        </div>
+
+        <div id="info-avisos" class="info-box">
+            <h3>Avisos Importantes</h3>
+            <div class="info-item">Posto central fechado no dia 20/08 para manutenção.</div>
+            <div class="info-item">Uso de máscara obrigatório em ambientes fechados.</div>
+        </div>
+
+        <div id="info-postinho" class="info-box">
+            <h3>Postos de Saúde Próximos</h3>
+            <div class="info-item">Posto Central – Rua A, nº 123</div>
+            <div class="info-item">Posto Bairro Verde – Av. B, nº 456</div>
+        </div>
+
+        <div id="info-vacina" class="info-box">
+            <h3>Carteira de Vacinação</h3>
+            <div class="info-item">Hepatite B – Dose 3 – 2023</div>
+            <div class="info-item">Covid-19 – Dose de reforço – 2024</div>
+        </div>
+
+        <div id="info-unidade" class="info-box">
+            <h3>Unidades de Saúde</h3>
+            <div class="info-item">Hospital Municipal – Pronto atendimento 24h</div>
+            <div class="info-item">UPA Zona Norte – Urgência e Emergência</div>
+        </div>
+
+        <div id="info-medicamentos" class="info-box">
+            <h3>Medicamentos Disponíveis</h3>
+            <div class="info-item">Dipirona – Comprimido</div>
+            <div class="info-item">Amoxicilina – Cápsula</div>
+        </div>
+
+        <div id="info-servicos" class="info-box">
+            <h3>Serviços de Saúde</h3>
+            <div class="info-item">Atendimento psicológico</div>
+            <div class="info-item">Fisioterapia</div>
+        </div>
+
+        <div id="info-ouvidoria" class="info-box">
+            <h3>Ouvidoria</h3>
+            <div class="info-item">Telefone: (11) 1234-5678</div>
+            <div class="info-item">Email: ouvidoria@saude.gov.br</div>
+        </div>
+
+        <!-- Barra inferior -->
+        <div class="bottom-nav">
+            <a href="#" onclick="showInfo('home')"><i class="fas fa-home"></i></a>
+            <a href="#" onclick="showInfo('saude')"><i class="fas fa-user"></i></a>
+            <a href="#" onclick="showInfo('config')"><i class="fas fa-cog"></i></a>
+        </div>
+
+        <!-- Resumo (fica fora da bottom-nav) -->
+        <div id="info-config" class="info-box">
+            <h3>Resumo de Resultados</h3>
+            <div class="info-item"><strong>Total de Vacinas Aplicadas:</strong> 1.245</div>
+            <div class="info-item"><strong>Consultas Agendadas:</strong> 870</div>
+            <div class="info-item"><strong>Exames Realizados:</strong> 652</div>
+            <div class="info-item"><strong>Medicamentos Distribuídos:</strong> 3.410</div>
+            <div class="info-item"><strong>Tempo Médio de Espera Reduzido:</strong> 32%</div>
+            <div class="info-item"><strong>Satisfação dos Usuários:</strong> 92%</div>
+        </div>
+
+    </div>
+
+    <script>
+        function showInfo(section) {
+            // Esconde todos os info-box
+            document.querySelectorAll('.info-box').forEach(div => div.style.display = 'none');
+            // Mostra a div clicada
+            document.getElementById(`info-${section}`).style.display = 'block';
+        }
+    </script>
+</body>
+</html>
